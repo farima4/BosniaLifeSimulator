@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgvai8occp5d3"]
+
+[ext_resource type="PackedScene" uid="uid://chd663pl522xe" path="res://Objects/grass.tscn" id="1_ox67j"]
+[ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="2_srlwg"]
+
+[node name="BanjaLuka" type="Node3D"]
+
+[node name="Block" parent="." instance=ExtResource("1_ox67j")]
+transform = Transform3D(14.4722, 0, 0, 0, 1, 0, 0, 0, 11.8752, -0.132514, 0, 0.0724441)
+
+[node name="Player" parent="." instance=ExtResource("2_srlwg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79036, 1.93293, -0.553614)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.759271, 0.650774, 0, -0.650774, -0.759271, -4.55065, 32.4199, -24.3857)
+directional_shadow_mode = 0
