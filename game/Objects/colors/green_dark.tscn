@@ -1,15 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://chd663pl522xe"]
+[gd_scene load_steps=4 format=3 uid="uid://bht851bhi40tm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ssjch"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4mlp"]
-albedo_color = Color(0, 0.694118, 0.192157, 1)
-metallic_specular = 0.31
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57ut1"]
+albedo_color = Color(0, 0.435294, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_57mni"]
-material = SubResource("StandardMaterial3D_w4mlp")
+material = SubResource("StandardMaterial3D_57ut1")
 
-[node name="Grass" type="StaticBody3D"]
+[node name="Block" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ssjch")
