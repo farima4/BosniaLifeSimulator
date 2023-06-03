@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://camqavb7wej7j"]
+
+[ext_resource type="PackedScene" uid="uid://kg6xgnpnhqjl" path="res://Objects/wall.tscn" id="1_yjnpf"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.402209, 0, 0, 0, 1, 0, 0, 0, 1, -2.46353, 1.28221, -1.55133)
+
+[node name="Node3D" parent="." instance=ExtResource("1_yjnpf")]
+transform = Transform3D(4.28345, 0, 0, 0, 2.77057, 0, 0, 0, 0.184145, -0.176811, 0.0935931, 0.637203)
+
+[node name="Node3D2" parent="." instance=ExtResource("1_yjnpf")]
+transform = Transform3D(4.28345, 0, 0, 0, 2.77057, 0, 0, 0, 0.184145, 20.7236, 0.0831866, 0.623322)
+
+[node name="Node3D3" parent="." instance=ExtResource("1_yjnpf")]
+transform = Transform3D(24.9099, 0, 0, 0, 0.91659, 0, 0, 0, 0.184145, 33.6571, 1.91857, 0.626529)

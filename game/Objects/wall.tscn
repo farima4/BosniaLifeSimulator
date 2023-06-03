@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://kg6xgnpnhqjl"]
+
+[ext_resource type="PackedScene" uid="uid://0hsnum4tlv6u" path="res://Objects/block.tscn" id="1_76lfl"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(4.28345, 0, 0, 0, 2.77057, 0, 0, 0, 0.184145, 4.87683, 0.82786, -0.758078)
+
+[node name="Block" parent="." instance=ExtResource("1_76lfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.133, 0, 4.25591)
