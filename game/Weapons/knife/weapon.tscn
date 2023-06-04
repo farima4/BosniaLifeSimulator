@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://baart0dkporpa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c80tm"]
+albedo_color = Color(0.447059, 0.447059, 0.447059, 1)
+metallic = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_h5oxt"]
+material = SubResource("StandardMaterial3D_c80tm")
+
+[node name="Weapon" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.022, 0, 0, 0, 0.384649, 0, 0, 0, 0.105, 0.213863, -0.0970091, -0.36088)
+mesh = SubResource("BoxMesh_h5oxt")

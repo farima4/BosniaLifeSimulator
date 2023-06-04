@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://o22du878mgww"]
+
+[node name="Weapon" type="Node3D"]

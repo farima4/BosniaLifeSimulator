@@ -1,7 +1,9 @@
 extends CharacterBody3D
 
 func kill():
-	pass
+	var main_menu = preload("res://Worlds/MainMenu.tscn").instantiate()
+	get_tree().get_root().add_child(main_menu)
+	get_node("/root/World").free()
 
 func set_health(amount):
 	health = clamp(health + amount, 0, 100)
@@ -33,8 +35,14 @@ var jump_max = jump + (jump * 0.1)
 var SPEED = speed
 var JUMP_VELOCITY = jump
 
+@onready var head = $Head
+
 # Weapons
-var inventory = ["empty", "empty", "mele"]
+var weapons = {
+	"empty" : preload("res://Weapons/empty/weapon.tscn").instantiate(),
+	"knife" : preload("res://Weapons/knife/weapon.tscn").instantiate()
+}
+var inventory = ["empty", "empty", "knife"]
 var current_slot = 2
 var weapon = inventory[current_slot]
 
@@ -43,6 +51,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	weapon = weapons[inventory[current_slot]]
+	head.add_child(weapon)
 
 func _physics_process(delta):
 	var axis_vector = Vector2.ZERO
@@ -105,24 +115,34 @@ func _input(event):
 		$Head/Camera3D.rotation.x = clamp($Head/Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		mouse_relative_x = clamp(event.relative.x, -50, 50)
 		mouse_relative_y = clamp(event.relative.y, -50, 50)
-	elif Input.is_action_just_pressed("slot1"):
+	elif Input.is_action_just_pressed("slot1") and current_slot != 0:
 		current_slot = 0
-		weapon = inventory[current_slot]
-	elif Input.is_action_just_pressed("slot2"):
+		weapon = weapons[inventory[current_slot]]
+		switch_weapon(weapon)
+	elif Input.is_action_just_pressed("slot2") and current_slot != 1:
 		current_slot = 1
-		weapon = inventory[current_slot]
-	elif Input.is_action_just_pressed("mele"):
+		weapon = weapons[inventory[current_slot]]
+		switch_weapon(weapon)
+	elif Input.is_action_just_pressed("mele") and current_slot != 2:
 		current_slot = 2
-		weapon = inventory[current_slot]
+		weapon = weapons[inventory[current_slot]]
+		switch_weapon(weapon)
 	elif Input.is_action_just_pressed("switch weapon"):
 		if current_slot == 0:
 			current_slot = 1
 		else:
 			current_slot = 0
-		weapon = inventory[current_slot]
+		weapon = weapons[inventory[current_slot]]
+		switch_weapon(weapon)
 
 
 func _on_take_damage():
 	pass # Replace with function body.
 
-
+func switch_weapon(weapon):
+	#var new_weapon = preload(weapon).instantiate()
+	head.remove_child($Head/Weapon)
+	head.add_child(weapon)
+	
+func get_weapon():
+	pass

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7d32wveyshf"]
+
+[ext_resource type="Script" path="res://Worlds/Play.gd" id="1_nrd8x"]
+[ext_resource type="Script" path="res://Worlds/Camera3D.gd" id="1_rvatb"]
+[ext_resource type="PackedScene" uid="uid://c5mabrlagglih" path="res://Objects/colors/blue_dark.tscn" id="2_6ubxh"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7823, 3.69084)
+current = true
+script = ExtResource("1_rvatb")
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -62.0
+offset_right = 159.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+script = ExtResource("1_nrd8x")
+
+[node name="Block2" parent="." instance=ExtResource("2_6ubxh")]
+transform = Transform3D(34.0748, 0, 0, 0, 22.4117, 0, 0, 0, 1, -0.113686, 3.17756, -2.56659)
+
+[connection signal="button_down" from="Camera3D/Control/Play" to="Camera3D/Control/Play" method="_on_button_down"]
