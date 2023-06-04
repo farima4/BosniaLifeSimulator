@@ -19,7 +19,35 @@ mesh = SubResource("CapsuleMesh_ah0u3")
 shape = SubResource("CapsuleShape3D_0a5ra")
 
 [node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.526086, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.552192, 0)
 fov = 85.0
+
+[node name="Control" type="Control" parent="Head/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Head/Camera3D/Control"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -64.0
+offset_right = 244.0
+offset_bottom = -10.0
+grow_vertical = 0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_0a5ra")

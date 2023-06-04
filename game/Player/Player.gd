@@ -1,5 +1,16 @@
 extends CharacterBody3D
 
+func kill():
+	pass
+
+func set_health(amount):
+	health = clamp(health + amount, 0, 100)
+	$Head/Camera3D/Control/ProgressBar.value = health
+	if health == 0:
+		kill()
+
+var ControllerSensitivity = 20
+
 var MouseSensitivity = 300
 var mouse_relative_x = 0
 var mouse_relative_y = 0
@@ -34,6 +45,13 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
+	var axis_vector = Vector2.ZERO
+	axis_vector.x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
+	axis_vector.y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
+	rotation.y -= axis_vector.x / ControllerSensitivity
+	$Head/Camera3D.rotation.x -= axis_vector.y / ControllerSensitivity
+	$Head/Camera3D.rotation.x = clamp($Head/Camera3D.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -49,20 +67,9 @@ func _physics_process(delta):
 		fov -= 1.5
 	
 	# Keeps speed, jump and fov under control
-	if speed > speed_max:
-		speed = speed_max
-	elif speed < speed_min:
-		speed = speed_min
-	
-	if jump > jump_max:
-		jump = jump_max
-	elif jump < jump_min:
-		jump = jump_min
-	
-	if fov > fov_max:
-		fov = fov_max
-	elif fov < fov_min:
-		fov = fov_min
+	speed = clamp(speed, speed_min, speed_max)
+	jump = clamp(jump, jump_min, jump_max)
+	fov = clamp(fov, fov_min, fov_max)
 	
 	
 	SPEED = speed
@@ -71,17 +78,23 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+
 	var input_dir = Input.get_vector("left", "right", "forwards", "backwards")
+	#var input_dir = Vector3.ZERO
+	input_dir.x *= abs(Input.get_action_strength("right") - Input.get_action_strength("left")) * 10
+	input_dir.y *= abs(Input.get_action_strength("backwards") - Input.get_action_strength("forwards")) * 10
+	#input_dir = input_dir.normalized() if input_dir.length() > 1 else input_dir
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED 
+		velocity.z = direction.z * SPEED 
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED) 
+		velocity.z = move_toward(velocity.z, 0, SPEED) 
 
 	move_and_slide()
 
@@ -107,3 +120,9 @@ func _input(event):
 		else:
 			current_slot = 0
 		weapon = inventory[current_slot]
+
+
+func _on_take_damage():
+	pass # Replace with function body.
+
+

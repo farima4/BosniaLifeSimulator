@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crbkk804msxvx"]
+[gd_scene load_steps=9 format=3 uid="uid://crbkk804msxvx"]
 
 [ext_resource type="PackedScene" uid="uid://twaqw3abb3lk" path="res://Objects/colors/black.tscn" id="2_h6vmj"]
 [ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="2_srlwg"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://kg6xgnpnhqjl" path="res://Objects/wall.tscn" id="4_1mdu7"]
 [ext_resource type="PackedScene" uid="uid://c3ht5od84sur4" path="res://Objects/doorBig.tscn" id="5_hvaic"]
 [ext_resource type="PackedScene" uid="uid://camqavb7wej7j" path="res://Objects/bigEntrance.tscn" id="7_cgvnq"]
+[ext_resource type="PackedScene" uid="uid://cmvwjhq3mw2iw" path="res://Objects/Dangerous Props/lava/lava.tscn" id="8_867al"]
 
-[node name="BanjaLuka" type="Node3D"]
+[node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.361464, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_srlwg")]
@@ -16,6 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1717, 2.05362, 1.13617)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.834377, 0.198036, -0.514389, 0.16471, 0.801006, 0.575552, 0.526009, -0.564953, 0.635723, -19.4073, 32.7654, 48.1826)
+light_energy = 1.646
 shadow_enabled = true
 
 [node name="Road" parent="." instance=ExtResource("2_h6vmj")]
@@ -139,3 +141,8 @@ transform = Transform3D(7.38389, 0, -0.413886, 0, 1, 0, 0.97014, 0, 3.15015, 22.
 
 [node name="Block13" parent="Boska" instance=ExtResource("3_3pjm8")]
 transform = Transform3D(4.29878, 0, -2.16183, 0, 1, 0, 4.18842, 0, 2.2188, 27.6564, 5.96579, -53.742)
+
+[node name="Lava" parent="." instance=ExtResource("8_867al")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59742, 1.24783, 7.62032)
+
+[connection signal="do_damage" from="Lava" to="Player" method="set_health"]
