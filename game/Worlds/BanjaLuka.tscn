@@ -1,19 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://crbkk804msxvx"]
 
 [ext_resource type="PackedScene" uid="uid://twaqw3abb3lk" path="res://Objects/colors/black.tscn" id="2_h6vmj"]
-[ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="2_srlwg"]
 [ext_resource type="PackedScene" uid="uid://0hsnum4tlv6u" path="res://Objects/block.tscn" id="3_3pjm8"]
 [ext_resource type="PackedScene" uid="uid://jxrucsu3acbk" path="res://Objects/colors/white.tscn" id="3_nyxbl"]
 [ext_resource type="PackedScene" uid="uid://kg6xgnpnhqjl" path="res://Objects/wall.tscn" id="4_1mdu7"]
 [ext_resource type="PackedScene" uid="uid://c3ht5od84sur4" path="res://Objects/doorBig.tscn" id="5_hvaic"]
 [ext_resource type="PackedScene" uid="uid://camqavb7wej7j" path="res://Objects/bigEntrance.tscn" id="7_cgvnq"]
+[ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="8_18p08"]
 [ext_resource type="PackedScene" uid="uid://cmvwjhq3mw2iw" path="res://Objects/Dangerous Props/lava/lava.tscn" id="8_867al"]
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.361464, 0)
-
-[node name="Player" parent="." instance=ExtResource("2_srlwg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1717, 2.05362, 1.13617)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.834377, 0.198036, -0.514389, 0.16471, 0.801006, 0.575552, 0.526009, -0.564953, 0.635723, -19.4073, 32.7654, 48.1826)
@@ -244,15 +241,6 @@ transform = Transform3D(6.58311, 0, -1.88772, 0, 0.120124, 0, 6.63593, 0, 1.8726
 [node name="Block55" parent="Boska" instance=ExtResource("3_3pjm8")]
 transform = Transform3D(0.218746, 0, -2.50892, 0, 0.120124, 0, 2.47736, 0, 0.221532, 33.2069, 12.5662, -47.7204)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Boska"]
-transform = Transform3D(-0.999222, -0.0394095, -0.00152191, 0.0213876, -0.573894, 0.81865, -0.033136, 0.817981, 0.57429, 12.9011, 12.1795, -7.37927)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Boska"]
-transform = Transform3D(-0.726517, 0.0584569, -0.684657, -0.500877, 0.637064, 0.585894, 0.47042, 0.768591, -0.433558, 6.97144, 12.0752, -55.2703)
-
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Boska"]
-transform = Transform3D(0.196861, -0.575332, 0.793876, -0.500877, 0.637064, 0.585894, -0.842833, -0.512974, -0.162757, 32.7658, 11.8695, -47.6881)
-
 [node name="Block56" parent="Boska" instance=ExtResource("3_3pjm8")]
 transform = Transform3D(-1.963, 0, -4.67875, 0, 0.120124, 0, 2.50639, 0, -3.66439, 25.8478, 12.5662, -53.3995)
 
@@ -294,5 +282,8 @@ transform = Transform3D(2.84707, 0, 0, 0, 1, 0, 0, 0, 6.32502, 30.7255, 5.96343,
 
 [node name="Lava" parent="." instance=ExtResource("8_867al")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59742, 1.24783, 7.62032)
+
+[node name="Player" parent="." instance=ExtResource("8_18p08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0389, 2.33005, 6.31977)
 
 [connection signal="do_damage" from="Lava" to="Player" method="set_health"]
