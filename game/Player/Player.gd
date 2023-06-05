@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
+signal health_changed(amount)
+
 func kill():
-	var main_menu = preload("res://Worlds/MainMenu.tscn").instantiate()
-	get_tree().get_root().add_child(main_menu)
-	get_node("/root/World").free()
+	get_tree().change_scene_to_file("res://Worlds/MainMenu.tscn")
 
 func set_health(amount):
 	health = clamp(health + amount, 0, 100)
-	$Head/Camera3D/Control/ProgressBar.value = health
+	health_changed.emit(health)
 	if health == 0:
 		kill()
 
@@ -52,7 +52,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[inventory[current_slot]]
-	head.add_child(weapon)
+	head.get_child(0).add_child(weapon)
 
 func _physics_process(delta):
 	var axis_vector = Vector2.ZERO
@@ -141,8 +141,8 @@ func _on_take_damage():
 
 func switch_weapon(weapon):
 	#var new_weapon = preload(weapon).instantiate()
-	head.remove_child($Head/Weapon)
-	head.add_child(weapon)
+	head.remove_child($Head/Camera3D/Weapon)
+	head.get_child(0).add_child(weapon)
 	
 func get_weapon():
 	pass

@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-var damage = -1
+var damage = -5
 
 var coliding = false
 
