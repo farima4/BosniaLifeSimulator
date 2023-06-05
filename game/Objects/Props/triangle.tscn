@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lj7vsatthfex"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_o86x5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v8sxg"]
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_o86x5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_v8sxg")
