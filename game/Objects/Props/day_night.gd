@@ -11,6 +11,8 @@ var status = 0
 
 
 func _ready():
+	$SunMoon/Sun2.cast_shadow = false
+	$SunMoon/Moon2.cast_shadow = false
 	print(Day.wait_time)
 	Day.wait_time = time / 2
 	Night.wait_time = time / 2

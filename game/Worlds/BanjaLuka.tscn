@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crbkk804msxvx"]
+[gd_scene load_steps=9 format=3 uid="uid://crbkk804msxvx"]
 
 [ext_resource type="PackedScene" uid="uid://twaqw3abb3lk" path="res://Objects/colors/black.tscn" id="2_h6vmj"]
 [ext_resource type="PackedScene" uid="uid://0hsnum4tlv6u" path="res://Objects/block.tscn" id="3_3pjm8"]
@@ -8,15 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://camqavb7wej7j" path="res://Objects/bigEntrance.tscn" id="7_cgvnq"]
 [ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="8_18p08"]
 [ext_resource type="PackedScene" uid="uid://cmvwjhq3mw2iw" path="res://Objects/Dangerous Props/lava/lava.tscn" id="8_867al"]
-[ext_resource type="PackedScene" uid="uid://d2t7k18t0iywl" path="res://Objects/Props/day_night.tscn" id="9_hpapt"]
-[ext_resource type="PackedScene" uid="uid://cve6ag2jkdrta" path="res://Objects/Props/ambient_light.tscn" id="10_ybwan"]
-
-[sub_resource type="Environment" id="Environment_1c0ex"]
-background_mode = 1
-reflected_light_source = 1
-fog_enabled = true
-fog_light_color = Color(0, 0, 0, 1)
-fog_density = 0.1
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.361464, 0)
@@ -290,14 +281,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59742, 1.24783, 7.62032)
 [node name="Player" parent="." instance=ExtResource("8_18p08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0389, 2.33005, 6.31977)
 
-[node name="DayNight" parent="." instance=ExtResource("9_hpapt")]
-transform = Transform3D(-0.923371, -6.71247e-08, -0.383909, 0, 1, -1.74846e-07, 0.383909, -1.61447e-07, -0.923371, -3.83653, 33.5623, 28.9585)
-
-[node name="AmbientLight" parent="." instance=ExtResource("10_ybwan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75182, 78.5919, 0.116822)
-
-[node name="Fog" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1c0ex")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0486343, 0.979167, -0.197145, -0.119965, 0.190223, 0.974384, 0.991586, 0.0710391, 0.108215, 0, 90.8601, 0)
 
 [connection signal="do_damage" from="Lava" to="Player" method="damage"]
-[connection signal="day_night_status_change" from="DayNight" to="Lava" method="_on_day_night_day_night_status_change"]
