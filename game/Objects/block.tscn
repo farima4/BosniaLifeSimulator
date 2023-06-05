@@ -2,7 +2,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ssjch"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_57mni"]
+[sub_resource type="BoxMesh" id="BoxMesh_420y4"]
 
 [node name="Block" type="StaticBody3D"]
 
@@ -10,4 +10,4 @@
 shape = SubResource("BoxShape3D_ssjch")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_57mni")
+mesh = SubResource("BoxMesh_420y4")
