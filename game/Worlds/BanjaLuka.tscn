@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crbkk804msxvx"]
+[gd_scene load_steps=9 format=3 uid="uid://crbkk804msxvx"]
 
 [ext_resource type="PackedScene" uid="uid://twaqw3abb3lk" path="res://Objects/colors/black.tscn" id="2_h6vmj"]
 [ext_resource type="PackedScene" uid="uid://0hsnum4tlv6u" path="res://Objects/block.tscn" id="3_3pjm8"]
@@ -323,4 +323,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59742, 1.24783, 7.62032)
 [node name="Player" parent="." instance=ExtResource("8_18p08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0389, 2.33005, 6.31977)
 
-[connection signal="do_damage" from="Lava" to="Player" method="set_health"]
+[connection signal="do_damage" from="Lava" to="Player" method="damage"]

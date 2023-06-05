@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-var damage = -5
+var damage = 20
 
 var coliding = false
 
@@ -12,6 +12,7 @@ func _physics_process(_delta):
 	
 	if coliding:
 		do_damage.emit(damage)
+
 
 
 
