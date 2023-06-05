@@ -55,4 +55,11 @@ script = ExtResource("1_53kkh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CapsuleShape3D_0a5ra")
 
+[node name="Invincibility" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476046, 0)
+
 [connection signal="health_changed" from="." to="Head/Camera3D/Control/HealthBar" method="_on_player_health_changed"]

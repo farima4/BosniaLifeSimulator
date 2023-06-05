@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crbkk804msxvx"]
+[gd_scene load_steps=9 format=3 uid="uid://crbkk804msxvx"]
 
 [ext_resource type="PackedScene" uid="uid://twaqw3abb3lk" path="res://Objects/colors/black.tscn" id="2_h6vmj"]
 [ext_resource type="PackedScene" uid="uid://0hsnum4tlv6u" path="res://Objects/block.tscn" id="3_3pjm8"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://camqavb7wej7j" path="res://Objects/bigEntrance.tscn" id="7_cgvnq"]
 [ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="8_18p08"]
 [ext_resource type="PackedScene" uid="uid://cmvwjhq3mw2iw" path="res://Objects/Dangerous Props/lava/lava.tscn" id="8_867al"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="9_26sev"]
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.361464, 0)
@@ -286,6 +285,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59742, 1.24783, 7.62032)
 
 [node name="Player" parent="." instance=ExtResource("8_18p08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0389, 2.33005, 6.31977)
-script = ExtResource("9_26sev")
 
-[connection signal="do_damage" from="Lava" to="Player" method="set_health"]
+[connection signal="do_damage" from="Lava" to="Player" method="damage"]

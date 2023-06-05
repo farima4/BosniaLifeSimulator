@@ -2,23 +2,31 @@ extends CharacterBody3D
 
 signal health_changed(amount)
 
+var health_max = 100
+var health = health_max
+
 func kill():
 	get_tree().change_scene_to_file("res://Worlds/MainMenu.tscn")
 
 func set_health(amount):
-	health = clamp(health + amount, 0, 100)
+	health = clamp(amount, 0, health_max)
 	health_changed.emit(health)
 	if health == 0:
 		kill()
+		
+func damage(dmg):
+	if Invincibility.is_stopped():
+		Invincibility.start()
+		set_health(health - dmg)
+		
+
+@onready var Invincibility = $Invincibility
 
 var ControllerSensitivity = 20
 
 var MouseSensitivity = 300
 var mouse_relative_x = 0
 var mouse_relative_y = 0
-
-var health_max = 100
-var health = health_max
 
 var fov_min = 80
 var fov = fov_min
@@ -140,8 +148,7 @@ func _on_take_damage():
 	pass # Replace with function body.
 
 func switch_weapon(weapon):
-	#var new_weapon = preload(weapon).instantiate()
-	head.remove_child($Head/Camera3D/Weapon)
+	head.get_child(0).remove_child($Head/Camera3D/Weapon)
 	head.get_child(0).add_child(weapon)
 	
 func get_weapon():
