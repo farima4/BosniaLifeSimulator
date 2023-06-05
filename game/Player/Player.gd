@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+var Weapons = preload("res://Player/weapons.gd").new()
+var weapons = Weapons.weapons
+
 signal health_changed(health, previous_health)
 
 var health_max = 100
@@ -8,8 +11,6 @@ var previous_health
 
 # 0 - dead
 # 1 - alive
-#
-
 var state = 1
 
 func kill():
@@ -54,14 +55,14 @@ var jump_max = jump + (jump * 0.1)
 var SPEED = speed
 var JUMP_VELOCITY = jump
 
+var light = false
+@onready var flashlight = $Head/Camera3D/FlashLight
+
 @onready var head = $Head
 
-# Weapons
-var weapons = {
-	"empty" : preload("res://Weapons/empty/weapon.tscn").instantiate(),
-	"knife" : preload("res://Weapons/knife/weapon.tscn").instantiate()
-}
-var inventory = ["empty", "empty", "knife"]
+
+
+var inventory = ["empty", "glock", "knife"]
 var current_slot = 2
 var weapon = inventory[current_slot]
 
@@ -71,7 +72,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapon = weapons[inventory[current_slot]]
-	head.get_child(0).add_child(weapon)
+	head.get_child(0).add_child(weapon[0])
 
 func _physics_process(delta):
 	if !state:
@@ -131,6 +132,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
+	if !state:
+		return 0
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x / MouseSensitivity
 		$Head/Camera3D.rotation.x -= event.relative.y / MouseSensitivity
@@ -156,6 +159,13 @@ func _input(event):
 			current_slot = 0
 		weapon = weapons[inventory[current_slot]]
 		switch_weapon(weapon)
+	elif(Input.is_action_just_pressed("light")):
+		if light:
+			flashlight.visible = false
+			light = false
+		else:
+			flashlight.visible = true
+			light = true
 
 
 func _on_take_damage():
@@ -163,7 +173,7 @@ func _on_take_damage():
 
 func switch_weapon(weapon):
 	head.get_child(0).remove_child($Head/Camera3D/Weapon)
-	head.get_child(0).add_child(weapon)
+	head.get_child(0).add_child(weapon[0])
 	
 func get_weapon():
 	pass
