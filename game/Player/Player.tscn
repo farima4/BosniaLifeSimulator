@@ -1,6 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://gg50803ycb5s"]
-
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_71i5n"]
+[gd_scene load_steps=3 format=3 uid="uid://gg50803ycb5s"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ah0u3"]
 
@@ -10,7 +8,6 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01424, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-script = ExtResource("1_71i5n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ah0u3")

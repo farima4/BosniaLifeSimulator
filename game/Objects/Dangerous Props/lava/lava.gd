@@ -8,7 +8,7 @@ signal do_damage(amount)
 
 @onready var player_area = $"/root/World/Player/Area3D/CollisionShape3D"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if coliding:
 		do_damage.emit(damage)
