@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2t7k18t0iywl"]
+
+[ext_resource type="Script" path="res://Objects/Props/day_night.gd" id="1_1kvl1"]
+
+[node name="DayNight" type="Node3D"]
+script = ExtResource("1_1kvl1")
+
+[node name="Day" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SunMoon" type="Node3D" parent="."]
+
+[node name="Sun" type="DirectionalLight3D" parent="SunMoon"]
+light_energy = 1.6
+light_bake_mode = 0
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="SunMoon"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="Night" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Day" to="." method="_on_day_timeout"]
+[connection signal="timeout" from="Night" to="." method="_on_night_timeout"]

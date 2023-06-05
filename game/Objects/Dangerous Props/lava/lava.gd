@@ -23,3 +23,7 @@ func _on_area_3d_area_entered(player_area):
 
 func _on_area_3d_area_exited(player_area):
 	coliding = false
+
+
+func _on_day_night_day_night_status_change(status):
+	print("day") if status == 0 else print("night")
