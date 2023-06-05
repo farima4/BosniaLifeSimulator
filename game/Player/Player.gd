@@ -1,23 +1,34 @@
 extends CharacterBody3D
 
-signal health_changed(amount)
+signal health_changed(health, previous_health)
 
 var health_max = 100
 var health = health_max
+var previous_health
+
+# 0 - dead
+# 1 - alive
+#
+
+var state = 1
 
 func kill():
-	get_tree().change_scene_to_file("res://Worlds/MainMenu.tscn")
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	$Head/Camera3D/Control/DeathScreen.visible = true
+	state = 0
+	
 
-func set_health(amount):
+func set_health(amount, previous_health):
 	health = clamp(amount, 0, health_max)
-	health_changed.emit(health)
+	health_changed.emit(health, previous_health)
 	if health == 0:
 		kill()
 		
 func damage(dmg):
 	if Invincibility.is_stopped():
 		Invincibility.start()
-		set_health(health - dmg)
+		previous_health = health
+		set_health(health - dmg, previous_health)
 		
 
 @onready var Invincibility = $Invincibility
@@ -63,6 +74,9 @@ func _ready():
 	head.get_child(0).add_child(weapon)
 
 func _physics_process(delta):
+	if !state:
+		return 0
+	
 	var axis_vector = Vector2.ZERO
 	axis_vector.x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
 	axis_vector.y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
