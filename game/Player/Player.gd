@@ -167,10 +167,6 @@ func _input(event):
 			flashlight.visible = true
 			light = true
 
-
-func _on_take_damage():
-	pass # Replace with function body.
-
 func switch_weapon(weapon):
 	head.get_child(0).remove_child($Head/Camera3D/Weapon)
 	head.get_child(0).add_child(weapon[0])

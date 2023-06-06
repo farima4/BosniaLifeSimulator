@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://chil20vxx72a0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wdt5n"]
+lifetime_randomness = 0.2
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = 97.08
+angular_velocity_max = 97.08
+angle_max = 194.2
+color = Color(1, 1, 0.376471, 1)
+hue_variation_min = 0.13
+hue_variation_max = 0.13
+
+[sub_resource type="BoxMesh" id="BoxMesh_yv0tp"]
+
+[node name="WeaponPickUp" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_wdt5n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GPUParticles3D"]
+mesh = SubResource("BoxMesh_yv0tp")
