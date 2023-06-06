@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7d32wveyshf"]
 
-[ext_resource type="Script" path="res://Worlds/Play.gd" id="1_nrd8x"]
 [ext_resource type="Script" path="res://Worlds/Camera3D.gd" id="1_rvatb"]
 [ext_resource type="PackedScene" uid="uid://c5mabrlagglih" path="res://Objects/colors/blue_dark.tscn" id="2_6ubxh"]
+[ext_resource type="Script" path="res://Worlds/Control.gd" id="2_hdiq8"]
 
 [node name="MainMenu" type="Node3D"]
 
@@ -18,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_hdiq8")
 
 [node name="Play" type="Button" parent="Camera3D/Control"]
 layout_mode = 1
@@ -33,9 +34,24 @@ offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
-script = ExtResource("1_nrd8x")
+
+[node name="Exit" type="Button" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 75.0
+offset_right = 113.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
 
 [node name="Block2" parent="." instance=ExtResource("2_6ubxh")]
 transform = Transform3D(34.0748, 0, 0, 0, 22.4117, 0, 0, 0, 1, -0.113686, 3.17756, -2.56659)
 
-[connection signal="button_down" from="Camera3D/Control/Play" to="Camera3D/Control/Play" method="_on_button_down"]
+[connection signal="button_down" from="Camera3D/Control/Play" to="Camera3D/Control" method="_on_play_button_down"]
+[connection signal="button_down" from="Camera3D/Control/Exit" to="Camera3D/Control" method="_on_exit_button_down"]
