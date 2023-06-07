@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://gg50803ycb5s"]
+[gd_scene load_steps=6 format=3 uid="uid://gg50803ycb5s"]
 
 [ext_resource type="Script" path="res://Player/HealthBar.gd" id="1_53kkh"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_bbeo1"]
 [ext_resource type="Script" path="res://Player/MainMenu.gd" id="3_yim2d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0a5ra"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_egqbi"]
+dof_blur_far_enabled = true
+dof_blur_far_transition = 200.0
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01424, 0)
@@ -19,8 +23,10 @@ shape = SubResource("CapsuleShape3D_0a5ra")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.526086, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+attributes = SubResource("CameraAttributesPractical_egqbi")
 current = true
 fov = 85.0
+far = 20.0
 
 [node name="Control" type="Control" parent="Head/Camera3D"]
 layout_mode = 3

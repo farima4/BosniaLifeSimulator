@@ -1,21 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2t7k18t0iywl"]
+[gd_scene load_steps=2 format=3 uid="uid://d2t7k18t0iywl"]
 
 [ext_resource type="Script" path="res://Objects/Props/day_night.gd" id="1_1kvl1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48emq"]
-grow_amount = 2.11
-
-[sub_resource type="SphereMesh" id="SphereMesh_0d5ke"]
-material = SubResource("StandardMaterial3D_48emq")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ghkw"]
-shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
-refraction_scale = 0.5
-grow_amount = 1.407
-
-[sub_resource type="SphereMesh" id="SphereMesh_jcljl"]
-material = SubResource("StandardMaterial3D_8ghkw")
 
 [node name="DayNight" type="Node3D"]
 script = ExtResource("1_1kvl1")
@@ -29,19 +14,16 @@ one_shot = true
 [node name="Moon2" type="MeshInstance3D" parent="SunMoon"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -400)
 gi_mode = 0
-mesh = SubResource("SphereMesh_0d5ke")
 
 [node name="Moon" type="DirectionalLight3D" parent="SunMoon/Moon2"]
 transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 40)
-light_energy = 0.5
-light_negative = true
+light_energy = 0.0
 light_bake_mode = 0
 shadow_enabled = true
 
 [node name="Sun2" type="MeshInstance3D" parent="SunMoon"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 500)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 600)
 gi_mode = 0
-mesh = SubResource("SphereMesh_jcljl")
 
 [node name="Sun" type="DirectionalLight3D" parent="SunMoon/Sun2"]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, -10)
