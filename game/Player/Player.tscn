@@ -26,7 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.526086, 0)
 attributes = SubResource("CameraAttributesPractical_egqbi")
 current = true
 fov = 85.0
-far = 20.0
 
 [node name="Control" type="Control" parent="Head/Camera3D"]
 layout_mode = 3
