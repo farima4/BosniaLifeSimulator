@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7d32wveyshf"]
+[gd_scene load_steps=6 format=3 uid="uid://c7d32wveyshf"]
 
 [ext_resource type="Script" path="res://Worlds/Camera3D.gd" id="1_rvatb"]
 [ext_resource type="Script" path="res://Worlds/Control.gd" id="2_hdiq8"]
+[ext_resource type="Texture2D" uid="uid://cc4timkq1qoxt" path="res://Textures/settings.png" id="3_gcauj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxp0b"]
 albedo_color = Color(0.396078, 1, 1, 1)
@@ -25,39 +26,68 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_hdiq8")
 
-[node name="Play" type="Button" parent="Camera3D/Control"]
+[node name="Settings" type="Control" parent="Camera3D/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Main" type="Control" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Camera3D/Control/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
+offset_left = -159.5
 offset_top = -62.0
-offset_right = 159.0
+offset_right = 159.5
 offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
-[node name="Exit" type="Button" parent="Camera3D/Control"]
+[node name="Exit" type="Button" parent="Camera3D/Control/Main"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -111.0
-offset_top = 75.0
-offset_right = 113.0
-offset_bottom = 161.0
+offset_left = -112.0
+offset_top = 76.0
+offset_right = 112.0
+offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Exit"
+
+[node name="SettingsButton" type="Button" parent="Camera3D/Control/Main"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -243.0
+offset_top = 12.0
+offset_right = -10.0
+offset_bottom = 245.0
+grow_horizontal = 0
+icon = ExtResource("3_gcauj")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+omni_range = 11.684
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(27.7437, 0, 0, 0, 11.7901, 0, 0, 0, 1, 2.07531, 1.25582, -2.02777)
 mesh = SubResource("BoxMesh_ophvs")
 
-[connection signal="button_down" from="Camera3D/Control/Play" to="Camera3D/Control" method="_on_play_button_down"]
-[connection signal="button_down" from="Camera3D/Control/Exit" to="Camera3D/Control" method="_on_exit_button_down"]
+[connection signal="button_down" from="Camera3D/Control/Main/Play" to="Camera3D/Control" method="_on_play_button_down"]
+[connection signal="button_down" from="Camera3D/Control/Main/Exit" to="Camera3D/Control" method="_on_exit_button_down"]
+[connection signal="button_down" from="Camera3D/Control/Main/SettingsButton" to="Camera3D/Control" method="_on_settings_button_button_down"]

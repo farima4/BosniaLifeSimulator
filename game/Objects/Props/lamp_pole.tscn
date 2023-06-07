@@ -1,8 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dssdmegs4wv6a"]
+[gd_scene load_steps=9 format=3 uid="uid://dssdmegs4wv6a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mox5r"]
+albedo_color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_clil7"]
+material = SubResource("StandardMaterial3D_mox5r")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_08qbv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pk2f"]
+albedo_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fvtsb"]
+material = SubResource("StandardMaterial3D_8pk2f")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wyxbn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxkkn"]
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_atcr0"]
+material = SubResource("StandardMaterial3D_pxkkn")
 
 [node name="LampPole" type="Node3D"]
 
@@ -32,3 +53,27 @@ mesh = SubResource("CylinderMesh_clil7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Top"]
 shape = SubResource("CylinderShape3D_08qbv")
+
+[node name="LightNest" type="StaticBody3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 3.916, -1.78986)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LightNest"]
+mesh = SubResource("CylinderMesh_fvtsb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightNest"]
+shape = SubResource("CylinderShape3D_wyxbn")
+
+[node name="Light" type="Node3D" parent="LightNest"]
+
+[node name="LightObject" type="MeshInstance3D" parent="LightNest/Light"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.38558, 0)
+mesh = SubResource("CylinderMesh_atcr0")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LightNest/Light"]
+transform = Transform3D(2, 0, 0, 0, 0.39795, 4.98414, 0, -1.99366, 0.15918, 0, 0, 0)
+light_energy = 9.633
+light_specular = 0.0
+spot_range = 6.0
+spot_attenuation = 0.554785
+spot_angle = 30.0
+spot_angle_attenuation = 0.68302

@@ -15,12 +15,6 @@ one_shot = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -400)
 gi_mode = 0
 
-[node name="Moon" type="DirectionalLight3D" parent="SunMoon/Moon2"]
-transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 40)
-light_energy = 0.0
-light_bake_mode = 0
-shadow_enabled = true
-
 [node name="Sun2" type="MeshInstance3D" parent="SunMoon"]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 600)
 gi_mode = 0

@@ -4,20 +4,20 @@
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0871558, 0.996195, 0, -0.996195, -0.0871558, 0, 0, 0)
-light_energy = 0.05
+light_energy = 0.03
 sky_mode = 1
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 0, 0, 0)
-light_energy = 0.05
+light_energy = 0.03
 sky_mode = 1
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.996195, -0.0871558, 0, -0.0871558, 0.996195, -1, 4.35451e-08, 3.8097e-09, 0, 0, 0)
-light_energy = 0.05
+light_energy = 0.03
 sky_mode = 1
 
 [node name="DirectionalLight3D4" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.996195, 0.0871558, 0, 0.0871558, 0.996195, -1, 4.35451e-08, -3.8097e-09, 0, 0, 0)
-light_energy = 0.05
+light_energy = 0.03
 sky_mode = 1

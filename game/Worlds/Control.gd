@@ -9,3 +9,9 @@ func _on_play_button_down():
 
 func _on_exit_button_down():
 	get_tree().quit()
+
+
+func _on_settings_button_button_down():
+	pass
+	
+	
