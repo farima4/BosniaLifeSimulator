@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kg6xgnpnhqjl" path="res://Objects/wall.tscn" id="4_1mdu7"]
 [ext_resource type="PackedScene" uid="uid://c3ht5od84sur4" path="res://Objects/doorBig.tscn" id="5_hvaic"]
 [ext_resource type="PackedScene" uid="uid://camqavb7wej7j" path="res://Objects/bigEntrance.tscn" id="7_cgvnq"]
-[ext_resource type="PackedScene" path="res://Objects/Props/triangle.tscn" id="7_ne4nr"]
+[ext_resource type="PackedScene" uid="uid://lj7vsatthfex" path="res://Objects/Props/triangle.tscn" id="7_ne4nr"]
 [ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="8_18p08"]
 [ext_resource type="PackedScene" uid="uid://cmvwjhq3mw2iw" path="res://Objects/Dangerous Props/lava/lava.tscn" id="8_867al"]
 [ext_resource type="PackedScene" uid="uid://d2t7k18t0iywl" path="res://Objects/Props/day_night.tscn" id="10_afm66"]
