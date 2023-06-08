@@ -5,29 +5,27 @@
 [node name="DayNight" type="Node3D"]
 script = ExtResource("1_1kvl1")
 
+[node name="Dawn" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="Day" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
+[node name="Dusk" type="Timer" parent="."]
+
+[node name="Night" type="Timer" parent="."]
+
 [node name="SunMoon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.951057, -0.309017, 0, 0.309017, 0.951057, 0, 0, 0)
 
-[node name="Moon2" type="MeshInstance3D" parent="SunMoon"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -400)
-gi_mode = 0
-
-[node name="Sun2" type="MeshInstance3D" parent="SunMoon"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 600)
-gi_mode = 0
-
-[node name="Sun" type="DirectionalLight3D" parent="SunMoon/Sun2"]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, -10)
+[node name="Sun" type="DirectionalLight3D" parent="SunMoon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 light_energy = 1.6
 light_bake_mode = 0
 shadow_enabled = true
 
-[node name="Night" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
+[connection signal="timeout" from="Dawn" to="." method="_on_dawn_timeout"]
 [connection signal="timeout" from="Day" to="." method="_on_day_timeout"]
-[connection signal="timeout" from="Night" to="." method="_on_night_timeout"]
+[connection signal="timeout" from="Dusk" to="." method="_on_dusk_timeout"]
