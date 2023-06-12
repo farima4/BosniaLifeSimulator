@@ -14,8 +14,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Dusk" type="Timer" parent="."]
+one_shot = true
 
 [node name="Night" type="Timer" parent="."]
+one_shot = true
 
 [node name="SunMoon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.951057, -0.309017, 0, 0.309017, 0.951057, 0, 0, 0)
@@ -29,3 +31,4 @@ shadow_enabled = true
 [connection signal="timeout" from="Dawn" to="." method="_on_dawn_timeout"]
 [connection signal="timeout" from="Day" to="." method="_on_day_timeout"]
 [connection signal="timeout" from="Dusk" to="." method="_on_dusk_timeout"]
+[connection signal="timeout" from="Night" to="." method="_on_night_timeout"]

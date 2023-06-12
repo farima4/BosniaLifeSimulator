@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d30mpcyrg1r4m"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wdt5n"]
+lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 6.0
+radial_accel_max = 8.0
+scale_min = 0.1
+scale_max = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6th5t"]
+albedo_color = Color(1, 1, 0.278431, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sfvft"]
+material = SubResource("StandardMaterial3D_6th5t")
+
+[node name="WeaponPickUp" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+amount = 50
+lifetime = 0.3
+randomness = 1.0
+trail_lifetime = 4.38
+process_material = SubResource("ParticleProcessMaterial_wdt5n")
+draw_pass_1 = SubResource("SphereMesh_sfvft")

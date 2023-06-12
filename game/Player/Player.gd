@@ -60,8 +60,6 @@ var light = false
 
 @onready var head = $Head
 
-
-
 var inventory = ["empty", "glock", "knife"]
 var current_slot = 2
 var weapon = inventory[current_slot]
@@ -71,8 +69,14 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	weapon = weapons[inventory[current_slot]]
-	head.get_child(0).add_child(weapon[0])
+	$GetWeapon.start()
+	state = 1
+	
+func _process(delta):
+	if !state:
+		return 0
+	if Input.is_action_pressed("fire") and $Head/Camera3D/Weapon:
+		$Head/Camera3D/Weapon.fire()
 
 func _physics_process(delta):
 	if !state:
@@ -159,7 +163,7 @@ func _input(event):
 			current_slot = 0
 		weapon = weapons[inventory[current_slot]]
 		switch_weapon(weapon)
-	elif(Input.is_action_just_pressed("light")):
+	elif Input.is_action_just_pressed("light"):
 		if light:
 			flashlight.visible = false
 			light = false
@@ -173,3 +177,7 @@ func switch_weapon(weapon):
 	
 func get_weapon():
 	pass
+
+
+func _on_get_weapon_timeout():
+	weapon = weapons[inventory[current_slot]]

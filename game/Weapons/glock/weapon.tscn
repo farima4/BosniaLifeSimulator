@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bchrmi6f00pgl"]
+[gd_scene load_steps=3 format=3 uid="uid://bchrmi6f00pgl"]
 
+[ext_resource type="Script" path="res://Weapons/glock/weapon.gd" id="1_3i0un"]
 [ext_resource type="PackedScene" uid="uid://dpdlg3f3exo42" path="res://Weapons/glock/glock.glb" id="1_ox2gq"]
 
 [node name="Weapon" type="Node3D"]
 transform = Transform3D(0.00355107, 0, 0.00934826, 0, 0.01, 0, -0.00934826, 0, 0.00355107, 0.394386, -0.227868, -0.282756)
+script = ExtResource("1_3i0un")
 
 [node name="glock" parent="." instance=ExtResource("1_ox2gq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28557, 0, -3.42377)
