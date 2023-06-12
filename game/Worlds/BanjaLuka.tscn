@@ -6,13 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://kg6xgnpnhqjl" path="res://Objects/wall.tscn" id="4_1mdu7"]
 [ext_resource type="PackedScene" uid="uid://c3ht5od84sur4" path="res://Objects/doorBig.tscn" id="5_hvaic"]
 [ext_resource type="PackedScene" uid="uid://camqavb7wej7j" path="res://Objects/bigEntrance.tscn" id="7_cgvnq"]
-[ext_resource type="PackedScene" path="res://Objects/Props/triangle.tscn" id="7_ne4nr"]
+[ext_resource type="PackedScene" uid="uid://lj7vsatthfex" path="res://Objects/Props/triangle.tscn" id="7_ne4nr"]
 [ext_resource type="PackedScene" uid="uid://gg50803ycb5s" path="res://Player/Player.tscn" id="8_18p08"]
 [ext_resource type="PackedScene" uid="uid://cmvwjhq3mw2iw" path="res://Objects/Dangerous Props/lava/lava.tscn" id="8_867al"]
 [ext_resource type="PackedScene" uid="uid://d2t7k18t0iywl" path="res://Objects/Props/day_night.tscn" id="10_afm66"]
 [ext_resource type="Script" path="res://Worlds/Fog.gd" id="10_s0esd"]
 [ext_resource type="PackedScene" uid="uid://dssdmegs4wv6a" path="res://Objects/Props/lamp_pole.tscn" id="12_uqbvp"]
 [ext_resource type="PackedScene" uid="uid://cve6ag2jkdrta" path="res://Objects/Props/ambient_light.tscn" id="13_vmdnn"]
+[ext_resource type="PackedScene" uid="uid://b5et5l6vkc1ct" path="res://nektar.glb" id="14_0bg6u"]
+[ext_resource type="PackedScene" uid="uid://4utqdid126yh" path="res://bottle2.glb" id="15_3b714"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bw6r"]
 ground_bottom_color = Color(0.384314, 0.454902, 0.54902, 1)
@@ -1054,6 +1056,15 @@ transform = Transform3D(0.0569618, 0, 0, 0, 1, 0, 0, 0, 0.0781954, 0.399375, 0.0
 
 [node name="Block22" parent="Road" instance=ExtResource("3_nyxbl")]
 transform = Transform3D(0.0569618, 0, 0, 0, 1, 0, 0, 0, 0.0781954, 0.489763, 0.00999999, 0)
+
+[node name="nektar" parent="." instance=ExtResource("14_0bg6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8453, 0.180469, 17.1149)
+
+[node name="nektar2" parent="." instance=ExtResource("14_0bg6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3996, 0.180469, 17.0189)
+
+[node name="bottle2" parent="." instance=ExtResource("15_3b714")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8638, 0.131598, 21.4971)
 
 [connection signal="do_damage" from="Lava" to="Player" method="damage"]
 [connection signal="day_night_cycle_length" from="WorldEnvironment/DayNight" to="WorldEnvironment" method="_on_day_night_day_night_cycle_length"]
