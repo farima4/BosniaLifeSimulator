@@ -96,6 +96,11 @@ spot_attenuation = 0.435275
 spot_angle = 25.0
 spot_angle_attenuation = 0.435275
 
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -1000)
+collide_with_bodies = false
+debug_shape_thickness = 1
+
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
