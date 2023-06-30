@@ -85,20 +85,32 @@ grow_vertical = 2
 text = "Main Menu"
 script = ExtResource("3_yim2d")
 
+[node name="ColorRect" type="ColorRect" parent="Head/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0.858824, 1)
+
 [node name="FlashLight" type="SpotLight3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.526086, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.359989, -0.264425, -0.233496)
 visible = false
 light_energy = 5.0
 light_size = 1.0
 shadow_enabled = true
 spot_range = 50.0
-spot_attenuation = 0.435275
 spot_angle = 25.0
-spot_angle_attenuation = 0.435275
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -1000)
-collide_with_bodies = false
 debug_shape_thickness = 1
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -112,6 +124,7 @@ one_shot = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476046, 0)
+omni_attenuation = 2.51677
 
 [node name="GetWeapon" type="Timer" parent="."]
 wait_time = 0.5

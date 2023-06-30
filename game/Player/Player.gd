@@ -33,6 +33,7 @@ func damage(dmg):
 		
 
 @onready var Invincibility = $Invincibility
+@onready var RayCast = $Head/Camera3D/RayCast3D
 
 var ControllerSensitivity = 20
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://crbkk804msxvx"]
+[gd_scene load_steps=18 format=3 uid="uid://crbkk804msxvx"]
 
 [ext_resource type="PackedScene" uid="uid://twaqw3abb3lk" path="res://Objects/colors/black.tscn" id="2_h6vmj"]
 [ext_resource type="PackedScene" uid="uid://0hsnum4tlv6u" path="res://Objects/block.tscn" id="3_3pjm8"]
@@ -13,8 +13,7 @@
 [ext_resource type="Script" path="res://Worlds/Fog.gd" id="10_s0esd"]
 [ext_resource type="PackedScene" uid="uid://dssdmegs4wv6a" path="res://Objects/Props/lamp_pole.tscn" id="12_uqbvp"]
 [ext_resource type="PackedScene" uid="uid://cve6ag2jkdrta" path="res://Objects/Props/ambient_light.tscn" id="13_vmdnn"]
-[ext_resource type="PackedScene" uid="uid://b5et5l6vkc1ct" path="res://nektar.glb" id="14_0bg6u"]
-[ext_resource type="PackedScene" uid="uid://4utqdid126yh" path="res://bottle2.glb" id="15_3b714"]
+[ext_resource type="PackedScene" uid="uid://bagde3tfrsgf0" path="res://nektar.glb" id="14_0bg6u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8bw6r"]
 ground_bottom_color = Color(0.384314, 0.454902, 0.54902, 1)
@@ -1062,9 +1061,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8453, 0.180469, 17.1149)
 
 [node name="nektar2" parent="." instance=ExtResource("14_0bg6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3996, 0.180469, 17.0189)
-
-[node name="bottle2" parent="." instance=ExtResource("15_3b714")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8638, 0.131598, 21.4971)
 
 [connection signal="do_damage" from="Lava" to="Player" method="damage"]
 [connection signal="day_night_cycle_length" from="WorldEnvironment/DayNight" to="WorldEnvironment" method="_on_day_night_day_night_cycle_length"]
