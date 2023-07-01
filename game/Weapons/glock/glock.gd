@@ -11,6 +11,10 @@ var bullet_penetration
 var reload_speed 
 var cooldown
 
+var is_equiping = false
+var is_reloading = false
+var is_sprinting = false
+
 func fire():
-	pass
+	print("shoot!")
 	

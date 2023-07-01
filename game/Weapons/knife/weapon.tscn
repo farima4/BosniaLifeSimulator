@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://baart0dkporpa"]
+[gd_scene load_steps=3 format=3 uid="uid://baart0dkporpa"]
 
+[ext_resource type="Script" path="res://Weapons/knife.gd" id="1_o5ej2"]
 [ext_resource type="PackedScene" uid="uid://o16trb24r1rp" path="res://Weapons/knife/knife.glb" id="1_qcpud"]
 
 [node name="Weapon" type="Node3D"]
+script = ExtResource("1_o5ej2")
 
 [node name="knife" parent="." instance=ExtResource("1_qcpud")]
 transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0.352398, -0.148369, -0.31833)

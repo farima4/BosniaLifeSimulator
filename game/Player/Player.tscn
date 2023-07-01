@@ -109,9 +109,11 @@ shadow_enabled = true
 spot_range = 50.0
 spot_angle = 25.0
 
-[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+[node name="look" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -1000)
 debug_shape_thickness = 1
+
+[node name="spread" type="RayCast3D" parent="Head/Camera3D/look"]
 
 [node name="Area3D" type="Area3D" parent="."]
 
